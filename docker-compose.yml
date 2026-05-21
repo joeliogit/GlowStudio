@@ -15,6 +15,7 @@ services:
       - ./database/seeds/seed_stylists.sql:/docker-entrypoint-initdb.d/02_seed_stylists.sql
       - ./database/seeds/seed_services.sql:/docker-entrypoint-initdb.d/03_seed_services.sql
       - ./database/seeds/seed_products.sql:/docker-entrypoint-initdb.d/04_seed_products.sql
+      - ./database/seeds/seed_users.sql:/docker-entrypoint-initdb.d/05_seed_users.sql
     ports:
       - '5433:5432'
     healthcheck:

@@ -81,6 +81,12 @@ EMAIL_PASS=tu_contraseña_app
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
+
+# Google Sign-In (OPCIONAL) — pega el MISMO OAuth Client ID en ambas.
+# Si quedan vacías, el botón de Google no aparece y el login por
+# contraseña funciona igual.
+GOOGLE_CLIENT_ID=
+VITE_GOOGLE_CLIENT_ID=
 ```
 
 ### 2. Levantar con Docker
@@ -95,6 +101,30 @@ Esto inicia tres servicios:
 - `glowstudio_frontend` — React en el puerto `3000`
 
 La base de datos se inicializa automáticamente con el schema y los seeds al primer arranque.
+
+Abrir **http://localhost:3000** en el navegador.
+
+### Credenciales de prueba
+
+Se crean automáticamente al inicializar la base de datos (seed `seed_users.sql`):
+
+| Rol | Email | Contraseña |
+|-----|-------|-----------|
+| Admin | `admin@glowstudio.com` | `Admin123` |
+| Recepcionista | `recepcion@glowstudio.com` | `Recepcion123` |
+| Cliente | `cliente@test.com` | `Cliente123` |
+
+El registro público (`/register`) solo crea cuentas de tipo `client`. Tras el login, cada rol se redirige a su panel: cliente → `/`, recepcionista → `/reception`, admin → `/admin`.
+
+### Login con Google (opcional)
+
+Para habilitar "Iniciar sesión con Google":
+
+1. Crear un **OAuth 2.0 Client ID** (tipo *Web application*) en [Google Cloud Console → Credentials](https://console.cloud.google.com/apis/credentials).
+2. Agregar `http://localhost:3000` en **Authorized JavaScript origins**.
+3. Pegar el mismo Client ID en `.env` (`GOOGLE_CLIENT_ID` y `VITE_GOOGLE_CLIENT_ID`) y reiniciar: `docker compose up -d`.
+
+Al entrar con Google: si el email **ya existe** se inicia sesión **con su rol actual** (cliente/recepcionista/admin); si es nuevo, se crea como `client`.
 
 ### 3. Desarrollo local (sin Docker)
 
@@ -120,6 +150,7 @@ Base URL: `http://localhost:5000/api`
 |---------|-------------|
 | `POST /auth/register` | Registro de usuario |
 | `POST /auth/login` | Login → JWT |
+| `POST /auth/google` | Login con Google (verifica el id_token) → JWT |
 | `GET /bookings` | Citas del usuario autenticado |
 | `POST /bookings` | Crear cita |
 | `GET /stylists` | Listado de estilistas |
@@ -146,7 +177,7 @@ Tras el envío marca `reminder_sent = true` en la cita.
 Tablas principales: `users`, `stylists`, `services`, `bookings`, `products`, `orders`, `notifications_log`.
 
 Las migraciones están en `database/migrations/` (numeradas `001_`…`007_`).  
-Los seeds en `database/seeds/` cargan estilistas, servicios y productos de ejemplo.
+Los seeds en `database/seeds/` cargan usuarios de prueba (un rol c/u), estilistas, servicios y productos de ejemplo.
 
 Con Docker, ambos se aplican automáticamente en el primer arranque.
 
