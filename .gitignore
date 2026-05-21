@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# .env se versiona A PROPÓSITO en este repo (proyecto académico, público,
+# para compartir con el profesor). Por eso se re-incluyen explícitamente:
+!.env
+!server/.env
+
+# Documentación pesada: solo se versiona el README
+PROYECTO_INTEGRADOR.html
+screenshots/
+*.pdf
+*.pptx
+
+# Core dumps
+core
+*.core
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Cache
+.npm
+.eslintcache
+.cache/
+.parcel-cache/
+.vite/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Uploads / generated files
+uploads/
+receipts/
+
+# TypeScript
+*.tsbuildinfo
+
+# Docker
+docker-data/
+
+# Misc
+*.pem
+*.p12
