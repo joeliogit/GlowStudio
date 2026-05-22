@@ -11,16 +11,6 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const registerUser = async (data) => {
-  const res = await api.post('/auth/register', data);
-  return res.data;
-};
-
-export const loginUser = async (credentials) => {
-  const res = await api.post('/auth/login', credentials);
-  return res.data;
-};
-
 // Envía el id_token de Google Identity Services al backend para iniciar sesión.
 export const googleLogin = async (credential) => {
   const res = await api.post('/auth/google', { credential });

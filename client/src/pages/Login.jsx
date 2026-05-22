@@ -2,7 +2,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
-import LoginForm from '../components/auth/LoginForm.jsx';
+import GoogleSignInButton from '../components/auth/GoogleSignInButton.jsx';
 
 export default function Login() {
   const { isAuthenticated, user } = useAuth();
@@ -38,19 +38,14 @@ export default function Login() {
               </span>
             </Link>
             <h1 className="font-serif text-2xl text-gray-800 mb-1">Bienvenida de vuelta</h1>
-            <p className="text-sm text-gray-400">Inicia sesión para continuar</p>
+            <p className="text-sm text-gray-400">Inicia sesión con tu cuenta de Google</p>
           </div>
 
-          <LoginForm />
+          <GoogleSignInButton text="continue_with" />
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500">
-              ¿No tienes cuenta?{' '}
-              <Link to="/register" className="text-pink-500 font-medium hover:text-pink-600 transition-colors">
-                Regístrate gratis
-              </Link>
-            </p>
-          </div>
+          <p className="mt-6 text-center text-sm text-gray-500">
+            Tu cuenta se crea automáticamente la primera vez que entras con Google.
+          </p>
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-4">

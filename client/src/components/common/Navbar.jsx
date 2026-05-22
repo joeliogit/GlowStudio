@@ -121,20 +121,12 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <>
-              <NavLink
-                to="/login"
-                className="text-sm font-medium text-gray-600 hover:text-pink-500 transition-colors"
-              >
-                Iniciar sesión
-              </NavLink>
-              <NavLink
-                to="/register"
-                className="bg-pink-500 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-pink-600 transition-colors shadow-md"
-              >
-                Registrarse
-              </NavLink>
-            </>
+            <NavLink
+              to="/login"
+              className="bg-pink-500 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-pink-600 transition-colors shadow-md"
+            >
+              Iniciar sesión con Google
+            </NavLink>
           )}
         </div>
 
@@ -208,16 +200,9 @@ export default function Navbar() {
                     <NavLink
                       to="/login"
                       onClick={() => setIsOpen(false)}
-                      className="text-center py-2.5 text-sm font-medium text-pink-600 border border-pink-300 rounded-xl hover:bg-pink-50"
-                    >
-                      Iniciar sesión
-                    </NavLink>
-                    <NavLink
-                      to="/register"
-                      onClick={() => setIsOpen(false)}
                       className="text-center py-2.5 text-sm font-medium bg-pink-500 text-white rounded-xl hover:bg-pink-600"
                     >
-                      Registrarse
+                      Iniciar sesión con Google
                     </NavLink>
                   </div>
                 )}

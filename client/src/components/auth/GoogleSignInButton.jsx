@@ -8,9 +8,9 @@ const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 const ROLE_REDIRECTS = { admin: '/admin', receptionist: '/reception', client: '/' };
 
 /**
- * Botón "Iniciar sesión con Google". Se renderiza junto al login/registro por
- * contraseña (no lo reemplaza). Solo aparece si VITE_GOOGLE_CLIENT_ID está
- * configurado; el rol del usuario lo decide el backend (conserva el existente).
+ * Botón "Iniciar sesión con Google" — único método de acceso. El rol (cliente,
+ * recepción o admin) lo decide el backend a partir del correo, y aquí se
+ * redirige al panel correspondiente según ese rol.
  *
  * @param {{ text?: 'signin_with' | 'signup_with' | 'continue_with' }} props
  */
@@ -19,8 +19,14 @@ export default function GoogleSignInButton({ text = 'continue_with' }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Sin Client ID no hay nada que mostrar (login por contraseña sigue intacto).
-  if (!CLIENT_ID) return null;
+  // Sin Client ID configurado no se puede iniciar sesión.
+  if (!CLIENT_ID) {
+    return (
+      <p className="text-center text-sm text-gray-500">
+        El inicio de sesión con Google no está configurado.
+      </p>
+    );
+  }
 
   const handleSuccess = async (credentialResponse) => {
     try {
@@ -36,25 +42,17 @@ export default function GoogleSignInButton({ text = 'continue_with' }) {
   };
 
   return (
-    <div>
-      <div className="relative my-5 flex items-center" aria-hidden="true">
-        <div className="flex-grow border-t border-gray-200" />
-        <span className="mx-3 text-xs text-gray-400">o continúa con</span>
-        <div className="flex-grow border-t border-gray-200" />
+    <GoogleOAuthProvider clientId={CLIENT_ID}>
+      <div className="flex justify-center">
+        <GoogleLogin
+          onSuccess={handleSuccess}
+          onError={() => toast.error('No se pudo iniciar sesión con Google.')}
+          text={text}
+          shape="pill"
+          locale="es"
+          width="320"
+        />
       </div>
-
-      <GoogleOAuthProvider clientId={CLIENT_ID}>
-        <div className="flex justify-center">
-          <GoogleLogin
-            onSuccess={handleSuccess}
-            onError={() => toast.error('No se pudo iniciar sesión con Google.')}
-            text={text}
-            shape="pill"
-            locale="es"
-            width="320"
-          />
-        </div>
-      </GoogleOAuthProvider>
-    </div>
+    </GoogleOAuthProvider>
   );
 }

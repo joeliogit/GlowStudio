@@ -1,6 +1,6 @@
 -- Seed: Products (prices in MXN)
 
-INSERT INTO products (name, description, category, price, stock, low_stock_threshold, brand, sku) VALUES
+INSERT INTO products (name, description, category, price, stock, low_stock_threshold, brand, sku, image_url) VALUES
 (
   'Shampoo Hidratante Argan',
   'Shampoo con aceite de argán marroquí para cabello seco y dañado. Aporta brillo y suavidad desde la primera aplicación.',
@@ -9,7 +9,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   48,
   8,
   'Moroccan Oil',
-  'MO-SHP-001'
+  'MO-SHP-001',
+  'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600'
 ),
 (
   'Mascarilla Reparadora Keratina',
@@ -19,7 +20,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   32,
   6,
   'Redken',
-  'RDK-MSK-002'
+  'RDK-MSK-002',
+  'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600'
 ),
 (
   'Aceite Capilar Brillo Intenso',
@@ -29,7 +31,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   25,
   5,
   'L''Oréal Professionnel',
-  'LOR-OIL-003'
+  'LOR-OIL-003',
+  'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600'
 ),
 (
   'Tónico Facial Vitamina C',
@@ -39,7 +42,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   20,
   4,
   'The Ordinary',
-  'ORD-TON-004'
+  'ORD-TON-004',
+  'https://images.unsplash.com/photo-1607602132700-068258431c6c?w=600'
 ),
 (
   'Crema Hidratante FPS 50',
@@ -49,7 +53,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   35,
   7,
   'Cetaphil',
-  'CET-CRM-005'
+  'CET-CRM-005',
+  'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=600'
 ),
 (
   'Esmalte Gel Premium Set x12',
@@ -59,7 +64,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   18,
   3,
   'OPI',
-  'OPI-GEL-006'
+  'OPI-GEL-006',
+  'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600'
 ),
 (
   'Lima Profesional de Cristal',
@@ -69,7 +75,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   60,
   10,
   'GlowStudio',
-  'GS-LIM-007'
+  'GS-LIM-007',
+  'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600'
 ),
 (
   'Sérum Antiedad Retinol 0.5%',
@@ -79,7 +86,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   15,
   4,
   'CeraVe',
-  'CRV-SRM-008'
+  'CRV-SRM-008',
+  'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600'
 ),
 (
   'Spray Fijador de Maquillaje',
@@ -89,7 +97,8 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   40,
   8,
   'NYX Professional',
-  'NYX-SPR-009'
+  'NYX-SPR-009',
+  'https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=600'
 ),
 (
   'Kit Brochas Maquillaje 8 piezas',
@@ -99,5 +108,6 @@ INSERT INTO products (name, description, category, price, stock, low_stock_thres
   22,
   5,
   'GlowStudio',
-  'GS-KIT-010'
+  'GS-KIT-010',
+  'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600'
 );
